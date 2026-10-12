@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>買取誠実 溝の口プライム店 LINE友だち追加</title>
+<script>
+  var CONFIG={GTM_ID:'GTM-N95NSSTK',LIFF_ID:'__LIFF_ID__',OA_ID:'@055cshus',STORE:'mizonokuchi'};
+  window.dataLayer=window.dataLayer||[];
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer',CONFIG.GTM_ID);
+</script>
+<script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+<style>
+body{margin:0;font-family:-apple-system,"Hiragino Sans",sans-serif;display:flex;min-height:100vh;align-items:center;justify-content:center;text-align:center}
+.box{padding:24px;max-width:360px}.hide{display:none}
+.btn{display:inline-block;margin-top:16px;padding:14px 28px;background:#06c755;color:#fff;border-radius:999px;text-decoration:none;font-weight:bold}
+</style></head>
+<body><div class="box">
+  <div id="loading"><p>LINEを開いています…</p></div>
+  <div id="fallback" class="hide"><p id="msg">下のボタンから、LINEで友だち追加してください。</p>
+  <a id="addBtn" class="btn" href="#">LINEで友だち追加する</a></div>
+</div>
+<script>
+(function(){
+  var addUrl='https://line.me/R/ti/p/'+encodeURIComponent(CONFIG.OA_ID);
+  var chatUrl='https://line.me/R/oaMessage/'+encodeURIComponent(CONFIG.OA_ID)+'/';
+  document.getElementById('addBtn').href=addUrl;
+  function fallback(t){document.getElementById('loading').classList.add('hide');
+    document.getElementById('fallback').classList.remove('hide');if(t)document.getElementById('msg').textContent=t;}
+  var KEY='cg_friend_sent_'+CONFIG.STORE, moved=false;
+  function go(){if(!moved){moved=true;location.replace(chatUrl);}}
+  function sent(){try{return localStorage.getItem(KEY)==='1'}catch(e){return false}}
+  function fire(){
+    if(sent()){go();return;}
+    try{localStorage.setItem(KEY,'1')}catch(e){}
+    window.dataLayer.push({event:'line_friend_added',store:CONFIG.STORE,eventCallback:function(){setTimeout(go,800)},eventTimeout:2000});
+    setTimeout(go,2500);
+  }
+  if(!window.liff){fallback();return;}
+  liff.init({liffId:CONFIG.LIFF_ID}).then(function(){
+        if(!liff.isInClient() && !/iPhone|iPad|Android/i.test(navigator.userAgent)){fallback();return;}
+    if(!liff.isLoggedIn()){liff.login({redirectUri:location.href});return;}
+    return liff.getFriendship().then(function(r){
+      if(r.friendFlag){fire();}else{fallback('友だち追加がまだのようです。下のボタンから追加してください。');}
+    });
+  }).catch(function(){fallback();});
+})();
+</script></body></html>
